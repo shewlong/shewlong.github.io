@@ -23,13 +23,18 @@ import MobileBlogDetails from '@/mobile_views/blog/Details'
 import MobileProjectMain from '@/mobile_views/project/Main'
 import MobileProjectDetails from '@/mobile_views/project/Details'
 import MobileSelfMain from '@/mobile_views/self/Main'
-import Login from '@/views/login/login'
+import login from '@/views/login/login'
 Vue.use(Router)
 
 export const constantRouterMap = [
   {
     path: '/login',
-    component: Login
+    component: login,
+    meta: {
+      type: 'user',
+      icon: 'el-icon-star-off',
+      title: '登录'
+    }
   },
   {
     path: '/user/new',

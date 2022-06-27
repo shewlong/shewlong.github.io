@@ -1,43 +1,66 @@
 <template>
-    <div style="min-height: 600px" v-loading="loading">
-        <!-- <el-card shadow="never" style="min-height: 400px" v-if="blog.id">
-            <div slot="header">
-                <span>{{blog.title}}</span>
-            </div>
-            <div style="font-size: 0.9rem;line-height: 1.5;color: #606c71;">
-                发布 {{blog.createTime}}
-                <br> 更新 {{blog.updateTime}}
-            </div>
-            <div style="font-size: 1.1rem;line-height: 1.5;color: #303133;border-bottom: 1px solid #E4E7ED;padding: 5px 0px 5px 0px">
-                <pre style="font-family: '微软雅黑'">{{blog.description}}</pre>
-            </div>
-            <div v-html="blog.content" class="markdown-body" style="padding-top: 20px"></div>
-        </el-card>
-        <el-card shadow="never" style="margin-bottom: 20px;padding: 20px 0px 20px 0px;text-align: center" v-if="!blog.id">
-            <font style="font-size: 30px;color:#dddddd ">
-                <b>没有更新 ╮(๑•́ ₃•̀๑)╭</b>
-            </font>
-        </el-card> -->
+<div>
+<el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+  <el-form-item label="token">
+    <el-input  v-model="ruleForm.token" ></el-input>
+  </el-form-item>
+  <!-- <el-form-item label="确认密码" prop="checkPass">
+    <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+  </el-form-item>
+  <el-form-item label="年龄" prop="age">
+    <el-input v-model.number="ruleForm.age"></el-input>
+  </el-form-item> -->
+  <el-form-item>
+    <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+    <el-button @click="resetForm('ruleForm')">重置</el-button>
+  </el-form-item>
+</el-form>
     </div>
 </template>
 <script>
 // import GistApi from '@/api/gist'
 export default {
   data () {
+    var validatePass = (rule, value, callback) => {
+      if (!value) {
+        callback(new Error('请输入token'))
+      } else {
+        if (this.ruleForm.checkPass !== '') {
+          this.$refs.ruleForm.validateField('checkPass')
+        }
+        callback()
+      }
+    }
     return {
-      // query: {
-      //     page: 1,
-      //     pageSize: 1
-      // },
-      // loading: false,
-      // blog: {
-      //     id: "",
-      //     title: "",
-      //     content: "",
-      //     description: "",
-      //     createTime: "",
-      //     updateTime: ""
-      // }
+      ruleForm: {
+        token: ''
+        // checkPass: '',
+        // age: ''
+      },
+      rules: {
+        pass: [
+          { validator: validatePass, trigger: 'blur' }
+        ]
+      }
+    }
+  },
+  methods: {
+    submitForm (formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.$store.dispatch('Authentication', this.ruleForm.token)
+
+          console.log(formName, 999)
+          // alert('submit!')
+          this.$router.push('/user/new')
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
+    },
+    resetForm (formName) {
+      this.$refs[formName].resetFields()
     }
   },
   mounted () {

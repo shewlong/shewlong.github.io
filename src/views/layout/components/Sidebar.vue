@@ -30,44 +30,42 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
-    import { constantRouterMap } from '@/router'
-    import TokenDialog from '@/views/common/TokenDialog'
-    export default {
-        components: {
-            TokenDialog
-        },
-        data() {
-            return {
-                constantRouterMap,
-                active: "",
-                parentUrl: "",
-                menuList: []
-            }
-        },
-        computed: {
-            ...mapGetters([
-                'token',
-                'githubUsername',
-                'mini'
-            ])
-        },
-        mounted() {
-            let arr = this.$route.path.split("/")
-            this.active = "/" + arr[1] + "/" + arr[2]
-        },
-        methods: {
-            onSelect(index) {
-                this.$router.push(index)
-            },
-            openTokenDialog() {
-                this.$refs.tokenDialog.open(() => {
-           
-                })
-            },
-            cancellation() {
-                this.$store.dispatch("Cancellation")
-            }
-        }
+import { mapGetters } from 'vuex'
+import { constantRouterMap } from '@/router'
+import TokenDialog from '@/views/common/TokenDialog'
+export default {
+  components: {
+    TokenDialog
+  },
+  data () {
+    return {
+      constantRouterMap,
+      active: '',
+      parentUrl: '',
+      menuList: []
     }
+  },
+  computed: {
+    ...mapGetters([
+      'token',
+      'githubUsername',
+      'mini'
+    ])
+  },
+  mounted () {
+    let arr = this.$route.path.split('/')
+    this.active = '/' + arr[1] + '/' + arr[2]
+  },
+  methods: {
+    onSelect (index) {
+      this.$router.push(index)
+    },
+    openTokenDialog () {
+      this.$router.push('/')
+    },
+    cancellation () {
+      this.$store.dispatch('Cancellation')
+    }
+  }
+}
 </script>
