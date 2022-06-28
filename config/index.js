@@ -19,7 +19,10 @@ module.exports = {
             compress: {
               drop_console: false,
               drop_debugger: false
-            }
+            },
+            output: {
+              comments: false, // 去掉注释
+            },
           },
         })
       );
