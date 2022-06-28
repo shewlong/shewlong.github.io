@@ -15,8 +15,11 @@ export default {
       'token'
     ])
   },
-  mounted () {
+  created () {
     this.$store.dispatch('Init')
+    if (this.token) {
+      this.$store.dispatch('GetInfo')
+    }
   },
   // 在app.vue中，是无法获取到当前路由信息的，解决方案：
   // 1.需要在更新完成之后再获取
