@@ -1,29 +1,6 @@
 import Vue from 'vue'
-// import store from '../store/index'
 import Router from 'vue-router'
 import Error404 from '@/views/error/Error404'
-import Layout from '@/views/layout/Layout'
-
-// import NewMain from '@/views/new/Main'
-// import SocialMain from '@/views/social/Main'
-// import SocialDetails from '@/views/social/Details'
-// import BlogMain from '@/views/blog/Main'
-// import BlogAdd from '@/views/blog/Add'
-// import BlogEdit from '@/views/blog/Edit'
-// import BlogDetails from '@/views/blog/Details'
-// import ProjectMain from '@/views/project/Main'
-// import ProjectDetails from '@/views/project/Details'
-// import ReadmeMain from '@/views/readme/Main'
-// import ConfigureMain from '@/views/configure/Main'
-// import HelperMain from '@/views/helper/Main'
-
-import MobileLayout from '@/mobile_views/layout/Layout'
-// import MobileBlogMain from '@/mobile_views/blog/Main'
-// import MobileBlogDetails from '@/mobile_views/blog/Details'
-// import MobileProjectMain from '@/mobile_views/project/Main'
-// import MobileProjectDetails from '@/mobile_views/project/Details'
-// import MobileSelfMain from '@/mobile_views/self/Main'
-// import login from '@/views/login/login'
 Vue.use(Router)
 
 export const constantRouterMap = [
@@ -40,7 +17,8 @@ export const constantRouterMap = [
   {
     path: '/user/new',
     redirect: '/user/new/main',
-    component: Layout,
+    component: () =>
+    import(/* webpackChunkName: "login" */ '@/views/layout/Layout.vue'),
     meta: {
       type: 'user',
       icon: 'el-icon-star-off',
@@ -59,7 +37,8 @@ export const constantRouterMap = [
   {
     path: '/user/social',
     redirect: '/user/social/main',
-    component: Layout,
+    component: () =>
+    import(/* webpackChunkName: "login" */ '@/views/layout/Layout.vue'),
     meta: {
       type: 'user',
       icon: 'el-icon-mobile-phone',
@@ -85,7 +64,8 @@ export const constantRouterMap = [
   {
     path: '/user/blog',
     redirect: '/user/blog/main',
-    component: Layout,
+    component: () =>
+    import(/* webpackChunkName: "login" */ '@/views/layout/Layout.vue'),
     meta: {
       type: 'user',
       icon: 'el-icon-edit-outline',
@@ -125,7 +105,8 @@ export const constantRouterMap = [
   {
     path: '/user/project',
     redirect: '/user/project/main',
-    component: Layout,
+    component: () =>
+    import(/* webpackChunkName: "login" */ '@/views/layout/Layout.vue'),
     meta: {
       type: 'user',
       icon: 'el-icon-service',
@@ -151,7 +132,8 @@ export const constantRouterMap = [
   {
     path: '/user/helper',
     redirect: '/user/helper/main',
-    component: Layout,
+    component: () =>
+    import(/* webpackChunkName: "login" */ '@/views/layout/Layout.vue'),
     meta: {
       type: 'user',
       icon: 'el-icon-printer',
@@ -172,7 +154,8 @@ export const constantRouterMap = [
   {
     path: '/user/readme',
     redirect: '/user/readme/main',
-    component: Layout,
+    component: () =>
+    import(/* webpackChunkName: "login" */ '@/views/layout/Layout.vue'),
     meta: {
       type: 'user',
       icon: 'el-icon-document',
@@ -191,7 +174,8 @@ export const constantRouterMap = [
   {
     path: '/user/configure',
     redirect: '/user/configure/main',
-    component: Layout,
+    component: () =>
+    import(/* webpackChunkName: "login" */ '@/views/layout/Layout.vue'),
     meta: {
       type: 'user',
       icon: 'el-icon-setting',
@@ -226,7 +210,8 @@ export const constantRouterMap = [
   {
     path: '/mobile/user/blog',
     redirect: '/mobile/user/blog/main',
-    component: MobileLayout,
+    component: () =>
+    import(/* webpackChunkName: "login" */ '@/mobile_views/layout/Layout.vue'),
     meta: {
       type: 'mobile',
       icon: 'edit',
@@ -257,7 +242,8 @@ export const constantRouterMap = [
   {
     path: '/mobile/user/project',
     redirect: '/mobile/user/project/main',
-    component: MobileLayout,
+    component: () =>
+    import(/* webpackChunkName: "login" */ '@/mobile_views/layout/Layout.vue'),
     meta: {
       type: 'mobile',
       icon: 'like-o',
@@ -288,7 +274,8 @@ export const constantRouterMap = [
   {
     path: '/mobile/user/self',
     redirect: '/mobile/user/self/main',
-    component: MobileLayout,
+    component: () =>
+    import(/* webpackChunkName: "login" */ '@/mobile_views/layout/Layout.vue'),
     meta: {
       type: 'mobile',
       icon: 'contact',

@@ -7,6 +7,7 @@ const path = require('path')
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 module.exports = {
   configureWebpack: (config) => {
+    config.plugins.delete('prefetch');
     if (isProd) {
       const plugins = []
       plugins.push(
