@@ -58,7 +58,7 @@ Vue.prototype.$share = function (message) {
 router.beforeEach((to, from, next) => {
   if (!store.state.token.token) {
     if (to.path === '/login') { next() } else {
-      next('login')
+      next({name: 'login'}, {replace: true})
     }
   } else {
     next()

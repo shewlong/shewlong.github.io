@@ -1,7 +1,7 @@
 <template>
 <div class="login">
   <van-row class="login-layout">
-    <van-col span="12">
+    <van-col style="width:310px">
       <van-field
         class="login-layout-token"
         v-model="ruleForm.token"
@@ -43,7 +43,7 @@ export default {
 </script>
 <style scoped>
 .login{
-  padding:50px;
+  padding:20px;
 }
  .login-layout{
     display:flex;

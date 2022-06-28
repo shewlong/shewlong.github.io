@@ -15,8 +15,15 @@ export default {
       'token'
     ])
   },
-  created () {
+  mounted () {
     this.$store.dispatch('Init')
+  },
+  // 在app.vue中，是无法获取到当前路由信息的，解决方案：
+  // 1.需要在更新完成之后再获取
+  // 2.在路由对应页面获取
+  // 3.在路由导航守卫获取
+  updated () {
+    console.log(this.$route)
     this.$setTitle(this.$route.meta.title)
     let windowSize = this.$util.getWindowSize()
     let pathArr = this.$route.path.split('/')
@@ -26,6 +33,7 @@ export default {
     if (pathArr[1] == 'mobile' && windowSize.height <= windowSize.width * 1.2) {
       this.$router.push('/')
     }
+    console.log(33333333)
   }
 }
 </script>
