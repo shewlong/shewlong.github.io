@@ -29,37 +29,45 @@
             is-link />
 
         <van-cell class="mobile-border mobile-margin-top" title="　其他博客" icon="password-view" :url="blog" is-link />
-
+        <van-button block @click="goToLogin">{{token?'退出登录':'登录'}}</van-button>
     </div>
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
-    export default {
-        data() {
-            return {
-                windowSize: this.$util.getWindowSize()
-            }
-        },
-        computed: {
-            ...mapGetters([
-                'githubUsername',
-                'avatarUrl',
-                'name',
-                'location',
-                'blog',
-                'followersTotal',
-                'followingTotal'
-            ])
-        },
-        mounted() {
-            // this.$toast({
-            //     message: '移动端开发中... 请在电脑上查看',
-            //     duration: 5000
-            // })
-        },
-        methods: {
-
-        }
+import { mapGetters } from 'vuex'
+export default {
+  data () {
+    return {
+      windowSize: this.$util.getWindowSize()
     }
+  },
+  computed: {
+    ...mapGetters([
+      'githubUsername',
+      'avatarUrl',
+      'name',
+      'location',
+      'blog',
+      'followersTotal',
+      'followingTotal',
+      'token'
+    ])
+  },
+  mounted () {
+    // this.$toast({
+    //     message: '移动端开发中... 请在电脑上查看',
+    //     duration: 5000
+    // })
+  },
+  methods: {
+    goToLogin () {
+      if (this.token) {
+        this.$store.dispatch('Cancellation')
+        this.$router.push('/login')
+      } else {
+        this.$router.push('/login')
+      }
+    }
+  }
+}
 </script>
