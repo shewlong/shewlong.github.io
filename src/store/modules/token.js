@@ -23,7 +23,7 @@ const token = {
   actions: {
     Authentication ({ commit }, accessToken) {
       commit('SET_TOKEN', accessToken)
-    }
+    },
 
     // Authentication({ commit }, accessToken) {
     //     UserApi.verifyToken(accessToken).then((response) => {
@@ -50,13 +50,13 @@ const token = {
 
     //     })
     // },
-    // Cancellation({ commit }) {
-    //     commit('REMOVE_TOKEN')
-    //     Vue.prototype.$message({
-    //         message: 'Token取消绑定',
-    //         type: 'info'
-    //     })
-    // },
+    Cancellation ({ commit }) {
+      commit('REMOVE_TOKEN')
+      Vue.prototype.$message({
+        message: 'Token取消绑定',
+        type: 'info'
+      })
+    }
   }
 }
 

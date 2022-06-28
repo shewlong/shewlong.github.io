@@ -33,7 +33,7 @@
                         </el-menu>
                     </el-col>
                     <el-col :span="8" style="text-align: center;padding: 12px 0px 0px 10px">
-                        <el-row>
+                        <!-- <el-row>
                             <el-col :span="4">
                                 <el-popover placement="top" trigger="hover">
                                     <div style="text-align: center">
@@ -52,14 +52,14 @@
                             <el-col :span="6" style="padding: 9px 0px 0px 10px;color:#909399;font-size: 13px">
                                 {{$util.formatTime(music.currentTime)}}/{{$util.formatTime(music.maxTime)}}
                             </el-col>
-                        </el-row>
+                        </el-row> -->
 
-                        <audio ref="music" loop autoplay v-if="audioAutoPlay">
+                        <!-- <audio ref="music" loop autoplay v-if="audioAutoPlay">
                             <source :src="audioUrl" type="audio/mpeg">
                         </audio>
                         <audio ref="music" loop v-else>
                             <source :src="audioUrl" type="audio/mpeg">
-                        </audio>
+                        </audio> -->
                     </el-col>
                     <el-col :span="4" style="text-align: right;">
                         <div style="font-size: 20px;color:#606266;margin-top: 5px">
@@ -100,165 +100,163 @@
             <foot></foot>
         </section>
 
-
     </div>
 </template>
 <script>
-    import { mapGetters } from 'vuex'
-    import Sidebar from './components/Sidebar'
-    import AppMain from './components/AppMain'
-    import Foot from './components/Foot'
-    export default {
-        components: {
-            Sidebar,
-            AppMain,
-            Foot
-        },
-        data() {
-            return {
-                music: {
-                    isPlay: false,
-                    currentTime: 0,
-                    maxTime: 0,
-                    volume: 100
-                },
-                fullButton: {
-                    full: false
-                },
-                topbar: {
-                    active: "",
-                },
-                randomIcon: []
-            }
-        },
-        computed: {
-            ...mapGetters([
-                'githubUsername',
-                'blogTitle',
-                'blogDescribe',
-                'avatarUrl',
-                'name',
-                'location',
-                'blog',
-                'fontColor',
-                'useBackgroundImage',
-                'backgroundColorLeft',
-                'backgroundColorRight',
-                'audioUrl',
-                'mini',
-                'followersTotal',
-                'followingTotal',
-                'audioAutoPlay',
-                'webSites'
-            ])
-        },
-        watch: {
-            '$refs.music.currentTime': function () {
-                console.log(this.$refs.music.currentTime)
-            }
-        },
-        mounted() {
-            this.$nextTick(() => {
-                setInterval(this.listenMusic, 1000)
-            })
-            let width = window.innerWidth
-            for (let i = 0; i < 12; i++) {
-                let temp = {}
-                let left = this.$util.randomInt(10, width - 310)
-                if(left>width/2-150){
-                    left+=300
-                }
-                temp["left"] = left
-                temp["top"] = this.$util.randomInt(20, 300)
-                temp["size"] = this.$util.randomInt(20, 40)
-                this.randomIcon.push(temp)
-            }
-        },
-        created() {
-
-        },
-        methods: {
-            selectTopbar(index) {
-                //取消菜单选中状态
-                this.topbar.active = this.topbar.active == "" ? " " : ""
-                switch (index) {
-                    case "#githubHome":
-                        window.open('https://github.com/' + this.githubUsername)
-                        break
-                    case "#blog":
-                        if (this.blog) {
-                            window.open((this.blog.match(/https?:\/\//i)?'':'https://') + this.blog)
-                        } else {
-                            this.$message({
-                                message: '博主没有其他博客',
-                                type: 'info'
-                            })
-                        }
-                        break
-                    default:
-                        if(/#webSites-\d+/.test(index)){
-                            let i = parseInt(index.split('-')[1])
-                            let url = this.webSites[i].url
-                            window.open((url.match(/https?:\/\//i)?'':'https://') + url)
-                        }
-                        break
-                }
-            },
-            moveIcon(index) {
-                let width = window.innerWidth
-                this.randomIcon[index]["top"] = this.$util.randomInt(20, 300)
-                let left = this.$util.randomInt(10, width - 310)
-                if(left>width/2-150){
-                    left+=300
-                }
-                this.randomIcon[index]["left"] = left
-            },
-            full() {
-                if (!this.fullButton.full) {
-                    this.$util.fullScreen()
-                    this.fullButton.full = true
-                } else {
-                    this.$util.fullExit()
-                    this.fullButton.full = false
-                }
-            },
-            listenMusic() {
-                if (!this.$refs.music) {
-                    return
-                }
-                if (this.$refs.music.readyState) {
-                    this.music.maxTime = this.$refs.music.duration
-                }
-                this.music.isPlay = !this.$refs.music.paused
-                this.music.currentTime = this.$refs.music.currentTime
-            },
-            play() {
-                if (this.$refs.music.paused) {
-                    this.$refs.music.play()
-                } else {
-                    this.$refs.music.pause()
-                }
-                this.music.isPlay = !this.$refs.music.paused
-                this.$nextTick(() => {
-                    document.getElementById('play').blur()
-                })
-
-            },
-            changeTime(time) {
-                this.$refs.music.currentTime = time
-            },
-            changeVolume(v) {
-                this.music.volume += v
-                if (this.music.volume > 100) {
-                    this.music.volume = 100
-                }
-                if (this.music.volume < 0) {
-                    this.music.volume = 0
-                }
-                this.$refs.music.volume = this.music.volume / 100
-            }
-        }
+import { mapGetters } from 'vuex'
+import Sidebar from './components/Sidebar'
+import AppMain from './components/AppMain'
+import Foot from './components/Foot'
+export default {
+  components: {
+    Sidebar,
+    AppMain,
+    Foot
+  },
+  data () {
+    return {
+      music: {
+        isPlay: false,
+        currentTime: 0,
+        maxTime: 0,
+        volume: 100
+      },
+      fullButton: {
+        full: false
+      },
+      topbar: {
+        active: ''
+      },
+      randomIcon: []
     }
+  },
+  computed: {
+    ...mapGetters([
+      'githubUsername',
+      'blogTitle',
+      'blogDescribe',
+      'avatarUrl',
+      'name',
+      'location',
+      'blog',
+      'fontColor',
+      'useBackgroundImage',
+      'backgroundColorLeft',
+      'backgroundColorRight',
+      'audioUrl',
+      'mini',
+      'followersTotal',
+      'followingTotal',
+      'audioAutoPlay',
+      'webSites'
+    ])
+  },
+  watch: {
+    '$refs.music.currentTime': function () {
+      console.log(this.$refs.music.currentTime)
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      setInterval(this.listenMusic, 1000)
+    })
+    let width = window.innerWidth
+    for (let i = 0; i < 12; i++) {
+      let temp = {}
+      let left = this.$util.randomInt(10, width - 310)
+      if (left > width / 2 - 150) {
+        left += 300
+      }
+      temp['left'] = left
+      temp['top'] = this.$util.randomInt(20, 300)
+      temp['size'] = this.$util.randomInt(20, 40)
+      this.randomIcon.push(temp)
+    }
+  },
+  created () {
+
+  },
+  methods: {
+    selectTopbar (index) {
+      // 取消菜单选中状态
+      this.topbar.active = this.topbar.active == '' ? ' ' : ''
+      switch (index) {
+        case '#githubHome':
+          window.open('https://github.com/' + this.githubUsername)
+          break
+        case '#blog':
+          if (this.blog) {
+            window.open((this.blog.match(/https?:\/\//i) ? '' : 'https://') + this.blog)
+          } else {
+            this.$message({
+              message: '博主没有其他博客',
+              type: 'info'
+            })
+          }
+          break
+        default:
+          if (/#webSites-\d+/.test(index)) {
+            let i = parseInt(index.split('-')[1])
+            let url = this.webSites[i].url
+            window.open((url.match(/https?:\/\//i) ? '' : 'https://') + url)
+          }
+          break
+      }
+    },
+    moveIcon (index) {
+      let width = window.innerWidth
+      this.randomIcon[index]['top'] = this.$util.randomInt(20, 300)
+      let left = this.$util.randomInt(10, width - 310)
+      if (left > width / 2 - 150) {
+        left += 300
+      }
+      this.randomIcon[index]['left'] = left
+    },
+    full () {
+      if (!this.fullButton.full) {
+        this.$util.fullScreen()
+        this.fullButton.full = true
+      } else {
+        this.$util.fullExit()
+        this.fullButton.full = false
+      }
+    },
+    listenMusic () {
+      if (!this.$refs.music) {
+        return
+      }
+      if (this.$refs.music.readyState) {
+        this.music.maxTime = this.$refs.music.duration
+      }
+      this.music.isPlay = !this.$refs.music.paused
+      this.music.currentTime = this.$refs.music.currentTime
+    },
+    play () {
+      if (this.$refs.music.paused) {
+        this.$refs.music.play()
+      } else {
+        this.$refs.music.pause()
+      }
+      this.music.isPlay = !this.$refs.music.paused
+      this.$nextTick(() => {
+        document.getElementById('play').blur()
+      })
+    },
+    changeTime (time) {
+      this.$refs.music.currentTime = time
+    },
+    changeVolume (v) {
+      this.music.volume += v
+      if (this.music.volume > 100) {
+        this.music.volume = 100
+      }
+      if (this.music.volume < 0) {
+        this.music.volume = 0
+      }
+      this.$refs.music.volume = this.music.volume / 100
+    }
+  }
+}
 </script>
 
 <style>

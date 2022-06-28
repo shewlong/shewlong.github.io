@@ -11,12 +11,12 @@ export default {
   computed: {
     ...mapGetters([
       'githubUsername',
-      'htmlTitle'
+      'htmlTitle',
+      'token'
     ])
   },
   created () {
     this.$store.dispatch('Init')
-    this.$store.dispatch('GetInfo')
     this.$setTitle(this.$route.meta.title)
     let windowSize = this.$util.getWindowSize()
     let pathArr = this.$route.path.split('/')

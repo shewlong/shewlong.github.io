@@ -61,10 +61,11 @@ export default {
       this.$router.push(index)
     },
     openTokenDialog () {
-      this.$router.push('/')
+      this.$router.push('/login')
     },
     cancellation () {
       this.$store.dispatch('Cancellation')
+      this.$router.push('/login')
     }
   }
 }
