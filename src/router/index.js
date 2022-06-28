@@ -1,35 +1,36 @@
 import Vue from 'vue'
-import store from '../store/index'
+// import store from '../store/index'
 import Router from 'vue-router'
 import Error404 from '@/views/error/Error404'
 import Layout from '@/views/layout/Layout'
 
-import NewMain from '@/views/new/Main'
-import SocialMain from '@/views/social/Main'
-import SocialDetails from '@/views/social/Details'
-import BlogMain from '@/views/blog/Main'
-import BlogAdd from '@/views/blog/Add'
-import BlogEdit from '@/views/blog/Edit'
-import BlogDetails from '@/views/blog/Details'
-import ProjectMain from '@/views/project/Main'
-import ProjectDetails from '@/views/project/Details'
-import ReadmeMain from '@/views/readme/Main'
-import ConfigureMain from '@/views/configure/Main'
-import HelperMain from '@/views/helper/Main'
+// import NewMain from '@/views/new/Main'
+// import SocialMain from '@/views/social/Main'
+// import SocialDetails from '@/views/social/Details'
+// import BlogMain from '@/views/blog/Main'
+// import BlogAdd from '@/views/blog/Add'
+// import BlogEdit from '@/views/blog/Edit'
+// import BlogDetails from '@/views/blog/Details'
+// import ProjectMain from '@/views/project/Main'
+// import ProjectDetails from '@/views/project/Details'
+// import ReadmeMain from '@/views/readme/Main'
+// import ConfigureMain from '@/views/configure/Main'
+// import HelperMain from '@/views/helper/Main'
 
 import MobileLayout from '@/mobile_views/layout/Layout'
-import MobileBlogMain from '@/mobile_views/blog/Main'
-import MobileBlogDetails from '@/mobile_views/blog/Details'
-import MobileProjectMain from '@/mobile_views/project/Main'
-import MobileProjectDetails from '@/mobile_views/project/Details'
-import MobileSelfMain from '@/mobile_views/self/Main'
-import login from '@/views/login/login'
+// import MobileBlogMain from '@/mobile_views/blog/Main'
+// import MobileBlogDetails from '@/mobile_views/blog/Details'
+// import MobileProjectMain from '@/mobile_views/project/Main'
+// import MobileProjectDetails from '@/mobile_views/project/Details'
+// import MobileSelfMain from '@/mobile_views/self/Main'
+// import login from '@/views/login/login'
 Vue.use(Router)
 
 export const constantRouterMap = [
   {
     path: '/login',
-    component: login,
+    component: () =>
+    import(/* webpackChunkName: "login" */ '@/views/login/login.vue'),
     meta: {
       type: 'user',
       icon: 'el-icon-star-off',
@@ -48,7 +49,9 @@ export const constantRouterMap = [
     children: [
       {
         path: 'main',
-        component: NewMain,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/views/new/Main.vue'),
+        // component: NewMain,
         meta: { title: '最新动态' }
       }
     ]
@@ -65,12 +68,16 @@ export const constantRouterMap = [
     children: [
       {
         path: 'main',
-        component: SocialMain,
+        // component: SocialMain,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/views/social/Main.vue'),
         meta: { title: '社交圈' }
       },
       {
         path: 'details/:name',
-        component: SocialDetails,
+        // component: SocialDetails,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/views/social/Details.vue'),
         meta: { title: '用户资料' }
       }
     ]
@@ -87,22 +94,30 @@ export const constantRouterMap = [
     children: [
       {
         path: 'main',
-        component: BlogMain,
+        // component: BlogMain,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/views/blog/Main.vue'),
         meta: { title: '博客列表' }
       },
       {
         path: 'add',
-        component: BlogAdd,
+        // component: BlogAdd,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/views/blog/Add.vue'),
         meta: { title: '发表博客' }
       },
       {
         path: 'edit/:id',
-        component: BlogEdit,
+        // component: BlogEdit,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/views/blog/Edit.vue'),
         meta: { title: '编辑博客' }
       },
       {
         path: 'details/:id',
-        component: BlogDetails,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/views/blog/Details.vue'),
+        // component: BlogDetails,
         meta: { title: '博客详情' }
       }
     ]
@@ -119,12 +134,16 @@ export const constantRouterMap = [
     children: [
       {
         path: 'main',
-        component: ProjectMain,
+        // component: ProjectMain,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/views/project/Main.vue'),
         meta: { title: '项目列表' }
       },
       {
         path: 'details/:name',
-        component: ProjectDetails,
+        // component: ProjectDetails,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/views/project/Details.vue'),
         meta: { title: '项目详情' }
       }
     ]
@@ -142,7 +161,10 @@ export const constantRouterMap = [
     children: [
       {
         path: 'main',
-        component: HelperMain,
+        // component: HelperMain,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/views/helper/Main.vue'),
+
         meta: { title: '使用帮助' }
       }
     ]
@@ -159,7 +181,9 @@ export const constantRouterMap = [
     children: [
       {
         path: 'main',
-        component: ReadmeMain,
+        // component: ReadmeMain,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/views/readme/Main.vue'),
         meta: { title: 'README.md' }
       }
     ]
@@ -177,7 +201,9 @@ export const constantRouterMap = [
     children: [
       {
         path: 'main',
-        component: ConfigureMain,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/views/configure/Main.vue'),
+        // component: ConfigureMain,
         meta: { title: '系统配置' }
       }
     ]
@@ -209,14 +235,18 @@ export const constantRouterMap = [
     children: [
       {
         path: 'main',
-        component: MobileBlogMain,
+        // component: MobileBlogMain,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/mobile_views/blog/Main.vue'),
         meta: {
           scrollTop: true
         }
       },
       {
         path: 'details/:id',
-        component: MobileBlogDetails,
+        // component: MobileBlogDetails,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/mobile_views/blog/Details.vue'),
         meta: {
           scrollTop: true
         }
@@ -236,14 +266,18 @@ export const constantRouterMap = [
     children: [
       {
         path: 'main',
-        component: MobileProjectMain,
+        // component: MobileProjectMain,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/mobile_views/project/Main.vue'),
         meta: {
           scrollTop: true
         }
       },
       {
         path: 'details/:name',
-        component: MobileProjectDetails,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/mobile_views/project/Details.vue'),
+        // component: MobileProjectDetails,
         meta: {
           scrollTop: true
         }
@@ -263,7 +297,9 @@ export const constantRouterMap = [
     children: [
       {
         path: 'main',
-        component: MobileSelfMain,
+        component: () =>
+        import(/* webpackChunkName: "login" */ '@/mobile_views/self/Main.vue'),
+        // component: MobileSelfMain,
         meta: {
           scrollTop: true
         }
