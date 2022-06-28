@@ -3,34 +3,8 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-// 代码压缩
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-module.exports = {
-  configureWebpack: (config) => {
-    config.plugins.delete('prefetch');
-    if (isProd) {
-      const plugins = []
-      plugins.push(
-        new UglifyJsPlugin ({
-          sourceMap: false,
-          // 多进程
-          parallel: true,
-          uglifyOptions: {
-            warnings: false,
-            compress: {
-              drop_console: false,
-              drop_debugger: false
-            },
-            output: {
-              comments: false, // 去掉注释
-            },
-          },
-        })
-      );
-      config.plugins = [...config.plugins, ...plugins]
-    }
-  },
 
+module.exports = {
     dev: {
 
         // Paths
@@ -82,7 +56,7 @@ module.exports = {
          * Source Maps
          */
 
-        productionSourceMap: false,
+        productionSourceMap: true,
         // https://webpack.js.org/configuration/devtool/#production
         devtool: '#source-map',
 
