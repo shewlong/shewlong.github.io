@@ -1,16 +1,23 @@
 <template>
 <div class="login">
   <van-row class="login-layout">
-    <van-col style="width:310px">
-      <van-field
-        class="login-layout-token"
+    <van-col style="width:310px; box-shadow: 10px 10px 5px #f1f1f1;border:1px solid #f1f1f1;">
+    <el-input
+     class="login-layout-token"
+      placeholder="请输入token"
+      :suffix-icon="ruleForm.token?'el-icon-success':'el-icon-error'"
+      v-model="ruleForm.token">
+    </el-input>
+      <!-- <van-field
+
         v-model="ruleForm.token"
         center
         label="token"
         placeholder="请输入token"
       >
-      </van-field>
-      <van-button block type="primary" @click="submitForm('ruleForm')">登录</van-button>
+      </van-field> -->
+      <van-button block  @click="submitForm('ruleForm')" v-if="ruleForm.token" class="login-button">登录</van-button>
+      <van-button block v-else>登录</van-button>
     </van-col>
   </van-row>
 
@@ -30,7 +37,7 @@ export default {
       if (this.ruleForm.token) {
         this.$store.dispatch('Authentication', this.ruleForm.token)
       } else {
-        alert('请输入token')
+        this.$toast('请输入token')
       }
     }
 
@@ -43,11 +50,23 @@ export default {
 .login{
   padding:20px;
 }
+.van-button--default {
+    color: #333;
+    background-color: #f5f5f5;
+    border: none;
+}
  .login-layout{
     display:flex;
     justify-content:center;
     align-items:center;
     height:100vh;
+  }
+  .login-button{
+    background:#feca00
+  }
+  /deep/ .el-input__inner {
+    border:none;
+    border-bottom: 1px solid #f1f1f1
   }
   .login-layout-token{
     margin-bottom:20px
