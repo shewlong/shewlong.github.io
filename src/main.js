@@ -7,14 +7,12 @@ import 'mavon-editor/dist/css/index.css'
 import 'mavon-editor/dist/markdown/github-markdown.min.css'
 import store from './store'
 
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
-
-import Vant from 'vant'
-import 'vant/lib/vant-css/index.css'
-
-Vue.use(Vant)
-Vue.use(ElementUI)
+// import ElementUI from 'element-ui'
+// import 'element-ui/lib/theme-chalk/index.css'
+// import Vant from 'vant'
+// import 'vant/lib/vant-css/index.css'
+// Vue.use(Vant)
+// Vue.use(ElementUI)
 Vue.use(mavonEditor)
 
 Vue.prototype.$markdown = function (value) {
