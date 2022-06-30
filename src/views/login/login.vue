@@ -29,8 +29,6 @@ export default {
     submitForm (formName) {
       if (this.ruleForm.token) {
         this.$store.dispatch('Authentication', this.ruleForm.token)
-        this.$router.push('/user/new')
-        this.$store.dispatch('GetInfo')
       } else {
         alert('请输入token')
       }

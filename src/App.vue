@@ -36,7 +36,6 @@ export default {
     if (pathArr[1] == 'mobile' && windowSize.height <= windowSize.width * 1.2) {
       this.$router.push('/')
     }
-    console.log(33333333)
   }
 }
 </script>
