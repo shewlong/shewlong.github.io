@@ -1,7 +1,7 @@
 <template>
 <div class="login">
   <van-row class="login-layout">
-    <van-col style="width:310px; box-shadow: 10px 10px 5px #f1f1f1;border:1px solid #f1f1f1;">
+    <van-col class="login-layout-box">
     <el-input
      class="login-layout-token"
       placeholder="请输入token"
@@ -49,6 +49,12 @@ export default {
 <style scoped>
 .login{
   padding:20px;
+}
+.login-layout-box{
+width:310px;
+box-shadow: 10px 10px 5px #f1f1f1;
+border:1px solid #f1f1f1;
+border-radius:10px
 }
 .van-button--default {
     color: #333;
