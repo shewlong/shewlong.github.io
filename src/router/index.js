@@ -130,28 +130,28 @@ export const constantRouterMap = [
       }
     ]
   },
-  {
-    path: '/user/helper',
-    redirect: '/user/helper/main',
-    component: () =>
-    import(/* webpackChunkName: "login" */ '@/views/layout/Layout.vue'),
-    meta: {
-      type: 'user',
-      icon: 'el-icon-printer',
-      title: '使用帮助',
-      mini: true
-    },
-    children: [
-      {
-        path: 'main',
-        // component: HelperMain,
-        component: () =>
-        import(/* webpackChunkName: "login" */ '@/views/helper/Main.vue'),
+  // {
+  //   path: '/user/helper',
+  //   redirect: '/user/helper/main',
+  //   component: () =>
+  //   import(/* webpackChunkName: "login" */ '@/views/layout/Layout.vue'),
+  //   meta: {
+  //     type: 'user',
+  //     icon: 'el-icon-printer',
+  //     title: '使用帮助',
+  //     mini: true
+  //   },
+  //   children: [
+  //     {
+  //       path: 'main',
+  //       // component: HelperMain,
+  //       component: () =>
+  //       import(/* webpackChunkName: "login" */ '@/views/helper/Main.vue'),
 
-        meta: { title: '使用帮助' }
-      }
-    ]
-  },
+  //       meta: { title: '使用帮助' }
+  //     }
+  //   ]
+  // },
   {
     path: '/user/readme',
     redirect: '/user/readme/main',
