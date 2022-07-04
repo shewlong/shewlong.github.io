@@ -104,6 +104,6 @@ export default {
   position: absolute;
   top:0;
   left:0;
-  background-image: url(../../../screenshots/sky.871d198.jpg)
+  background-image: url(https://img9.51tietu.net/pic/2019-091222/myswtnsxsrsmyswtnsxsrs.jpg)
 }
 </style>
