@@ -33,33 +33,6 @@
                         </el-menu>
                     </el-col>
                     <el-col :span="8" style="text-align: center;padding: 12px 0px 0px 10px">
-                        <!-- <el-row>
-                            <el-col :span="4">
-                                <el-popover placement="top" trigger="hover">
-                                    <div style="text-align: center">
-                                        <el-progress color="#67C23A" type="circle" :percentage="music.volume"></el-progress>
-                                        <br>
-                                        <el-button @click="changeVolume(-10)" icon="el-icon-minus" circle></el-button>
-                                        <el-button @click="changeVolume(10)" icon="el-icon-plus" circle></el-button>
-                                    </div>
-
-                                    <el-button @click="play" id="play" slot="reference" :icon="music.isPlay?'el-icon-refresh':'el-icon-caret-right'" circle></el-button>
-                                </el-popover>
-                            </el-col>
-                            <el-col :span="14" style="padding-left: 20px">
-                                <el-slider @change="changeTime" :format-tooltip="$util.formatTime" :max="music.maxTime" v-model="music.currentTime" style="width: 100%;"></el-slider>
-                            </el-col>
-                            <el-col :span="6" style="padding: 9px 0px 0px 10px;color:#909399;font-size: 13px">
-                                {{$util.formatTime(music.currentTime)}}/{{$util.formatTime(music.maxTime)}}
-                            </el-col>
-                        </el-row> -->
-
-                        <!-- <audio ref="music" loop autoplay v-if="audioAutoPlay">
-                            <source :src="audioUrl" type="audio/mpeg">
-                        </audio>
-                        <audio ref="music" loop v-else>
-                            <source :src="audioUrl" type="audio/mpeg">
-                        </audio> -->
                     </el-col>
                     <el-col :span="4" style="text-align: right;">
                         <div style="font-size: 20px;color:#606266;margin-top: 5px">
