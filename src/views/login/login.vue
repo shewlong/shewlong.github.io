@@ -1,5 +1,22 @@
 <template>
 <div class="login">
+    <vue-particles
+      color="#409EFF"
+      :particleOpacity="0.7"
+      :particlesNumber="60"
+      shapeType="circle"
+      :particleSize="6"
+      linesColor="#409EFF"
+      :linesWidth="1"
+      :lineLinked="true"
+      :lineOpacity="0.4"
+      :linesDistance="150"
+      :moveSpeed="3"
+      :hoverEffect="true"
+      hoverMode="grab"
+      :clickEffect="true"
+      clickMode="push">
+    </vue-particles>
   <van-row class="login-layout">
     <van-col class="login-layout-box">
     <el-input
@@ -20,11 +37,16 @@
       <van-button block v-else>登录</van-button>
     </van-col>
   </van-row>
-
 </div>
 </template>
+
 <script>
+import VueParticles from 'vue-particles'
+import Vue from 'vue'
 export default {
+  components: {
+    VueParticles
+  },
   data () {
     return {
       ruleForm: {
@@ -42,7 +64,8 @@ export default {
     }
 
   },
-  mounted () {
+  beforeMount () {
+    Vue.use(VueParticles)
   }
 }
 </script>
@@ -77,4 +100,9 @@ border-radius:10px
   .login-layout-token{
     margin-bottom:20px
   }
+  #particles-js {
+  width: 100%;
+  height: calc(100% - 100px);
+  position: absolute;
+}
 </style>

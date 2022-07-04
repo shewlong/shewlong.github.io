@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import App from './App'
 import util from './utils/util'
 import router from './router'
@@ -6,12 +5,14 @@ import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import 'mavon-editor/dist/markdown/github-markdown.min.css'
 import store from './store'
+import Vue from 'vue'
 // import ElementUI from 'element-ui'
 // import 'element-ui/lib/theme-chalk/index.css'
 // import Vant from 'vant'
 // import 'vant/lib/vant-css/index.css'
 // Vue.use(Vant)
 // Vue.use(ElementUI)
+
 Vue.use(mavonEditor)
 
 Vue.prototype.$markdown = function (value) {
