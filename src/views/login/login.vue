@@ -28,17 +28,16 @@
       <van-button block  @click="submitForm('ruleForm')" v-if="ruleForm.token" class="login-button ">登录</van-button>
       <van-button block v-else class="login-button-disabled">登录</van-button>
     </van-col>
-    
+
   </van-row>
 </div>
 </template>
 
 <script>
-import VueParticles from 'vue-particles'
-import Vue from 'vue'
+// import vueParticles from 'vue-particles'
 export default {
   components: {
-    VueParticles
+    // vueParticles
   },
   data () {
     return {
@@ -58,16 +57,17 @@ export default {
 
   },
   beforeMount () {
-    Vue.use(VueParticles)
+    // Vue.use(VueParticles)
   }
 }
 </script>
 <style scoped>
 .login{
-  padding:20px;
-  position: absolute;
-  top: 50%;
-  transform: translatey(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #f5f5f5
 }
 .login-layout-box{
     width:310px;
@@ -79,9 +79,9 @@ export default {
     border: none;
 }
  .login-layout{
-    display:flex;
+    /* display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:center; */
     /* height:100vh; */
   }
   .login-button{
@@ -100,7 +100,7 @@ export default {
   }
   #particles-js {
   width: 100%;
-  height: calc(100% - 100px);
+  height: 100% ;
   position: absolute;
 }
 </style>

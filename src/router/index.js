@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Error404 from '@/views/error/Error404'
+
 Vue.use(Router)
 
 export const constantRouterMap = [
