@@ -31,7 +31,6 @@ module.exports = {
       'vant':"Vant",
       axios: 'axios',
       vuex: 'Vuex',
-      'vue-particles':'VueParticles'
     },
     output: {
         path: config.build.assetsRoot,
