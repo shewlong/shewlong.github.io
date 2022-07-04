@@ -4,9 +4,12 @@
         <van-nav-bar style="position:fixed;top:0;z-index: 9999; box-shadow: 0px -3px 10px #888888;width: 100%;" title="个人中心" />
         <div style="height: 60px;"></div>
         <van-row style="background: #ffffff;" class="mobile-border">
-            <van-col span="8" style="padding: 10px 10px 5px 10px">
+            <van-col span="8" style="padding: 10px 10px 5px 10px" >
+                <div id="wrapper">
+                <div id="flash"></div>
                 <img :src="avatarUrl" style="margin-right: 10px;width:100px; height:100px; border-radius:5px; border: 1px solid #EBEEF5"
                 />
+                </div>
             </van-col>
             <van-col span="16" style="padding: 10px 10px 0px 10px">
                 <font style="color:#303133;font-size: 18px;line-height:33px;">{{githubUsername}}</font>
@@ -71,3 +74,27 @@ export default {
   }
 }
 </script>
+<style scoped>
+#wrapper{
+  position: relative;
+  /* width: 240px; */
+  cursor: pointer;
+  overflow:hidden;
+}
+#flash{
+  position: absolute;
+  width: 50px;
+  height: 96%;
+  transform: skewX(-50deg);
+  top: 0;
+  /* background:red; */
+  background:-webkit-linear-gradient(left,rgba(255,255,255,0)0%,rgba(255,255,255,0.5)50%,rgba(255,255,255,0)100%);
+	animation:myfirst 2s infinite;
+}
+@keyframes myfirst
+{
+	from {left:-100px}
+	to {left:150px}
+}
+
+</style>

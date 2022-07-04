@@ -22,20 +22,13 @@
     <el-input
      class="login-layout-token"
       placeholder="请输入token"
-      :suffix-icon="ruleForm.token?'el-icon-success':'el-icon-error'"
       v-model="ruleForm.token">
+      <i slot="suffix" class="el-input__icon el-icon-error" @click="ruleForm.token?ruleForm.token=null:''"></i>
     </el-input>
-      <!-- <van-field
-
-        v-model="ruleForm.token"
-        center
-        label="token"
-        placeholder="请输入token"
-      >
-      </van-field> -->
-      <van-button block  @click="submitForm('ruleForm')" v-if="ruleForm.token" class="login-button">登录</van-button>
-      <van-button block v-else>登录</van-button>
+      <van-button block  @click="submitForm('ruleForm')" v-if="ruleForm.token" class="login-button ">登录</van-button>
+      <van-button block v-else class="login-button-disabled">登录</van-button>
     </van-col>
+    
   </van-row>
 </div>
 </template>
@@ -72,15 +65,16 @@ export default {
 <style scoped>
 .login{
   padding:20px;
+  position: absolute;
+  top: 50%;
+  transform: translatey(-50%);
 }
 .login-layout-box{
-width:310px;
-box-shadow: 10px 10px 5px #f1f1f1;
-border:1px solid #f1f1f1;
-border-radius:10px
+    width:310px;
+    border-radius:10px
 }
 .van-button--default {
-    color: #333;
+    /* color: #333; */
     background-color: #f5f5f5;
     border: none;
 }
@@ -88,17 +82,21 @@ border-radius:10px
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
+    /* height:100vh; */
   }
   .login-button{
-    background:#feca00
+    background:#feca00;
+  }
+  .login-button-disabled{
+    color:#111;
+    background:#eee;
   }
   /deep/ .el-input__inner {
     border:none;
-    border-bottom: 1px solid #f1f1f1
+    border-bottom: 1px solid #f1f1f1;
   }
   .login-layout-token{
-    margin-bottom:20px
+    margin-bottom:30px
   }
   #particles-js {
   width: 100%;
