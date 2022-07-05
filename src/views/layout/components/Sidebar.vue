@@ -9,7 +9,14 @@
                 </el-menu-item>
             </el-menu>
         </el-card>
-
+        <el-card shadow="never" style="margin-top: 20px;">
+            <el-menu>
+                <el-menu-item @click="gotoNews()">
+                    <i class="el-icon-news"></i>
+                    <span slot="title" class="elMenu-title"><a href="https://sina-news.vercel.app/" style="color:#555;">实时新闻</a></span>
+                </el-menu-item>
+            </el-menu>
+        </el-card>
         <el-card shadow="never" style="margin-top: 20px;text-align: center">
             <div v-if="!token" style="font-size: 0.9rem;line-height: 1.5;color: #606c71;">
                 <el-tag type="danger" size="small">&nbsp;</el-tag>&nbsp;&nbsp; Token未绑定&nbsp;&nbsp;
@@ -66,7 +73,17 @@ export default {
     cancellation () {
       this.$store.dispatch('Cancellation')
       this.$router.push('/login')
+    },
+    gotoNews () {
+      // window.open('https://sina-news.vercel.app/')
     }
   }
 }
 </script>
+<style lang="less" scoped>
+.elMenu-title{
+  a:hover{
+    text-decoration:none;
+  }
+}
+</style>>
