@@ -7,8 +7,7 @@ import router from '../../router'
 const TOKEN_KEY = 'TOKEN_KEY'
 const token = {
   state: {
-    // 暂时不开放
-    // token: Cookie.getAttribute(TOKEN_KEY) || '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'
+    // token信息不能开放
     token: Cookie.getAttribute(TOKEN_KEY)
   },
 
