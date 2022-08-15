@@ -57,16 +57,20 @@ Vue.prototype.$share = function (message) {
     })
   }
 }
+
 router.beforeEach((to, from, next) => {
   if (!store.state.token.token) {
-    if (to.path === '/login') { next() } else {
+    Vue.prototype.$toast('在 github-> settings-> developerSettings-> personalAccessTokens 勾选gist权限,获取Token. 详情参考README.md')
+    if (to.path === '/login') {
+      next()
+    } else {
       next('login')
     }
   } else {
     next()
   }
-}
-)
+})
+
 Vue.prototype.$mobileShare = function (message) {
   if (!message) {
     message = window.location
@@ -95,6 +99,8 @@ new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
+  components: {
+    App
+  },
   template: '<App/>'
 })

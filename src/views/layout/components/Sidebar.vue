@@ -1,20 +1,17 @@
 <template>
     <div>
         <el-card shadow="never">
-            <el-menu :default-active="active" @select="onSelect">
-                <el-menu-item v-for="item in constantRouterMap" v-if="item.meta&&item.meta.type=='user'&&(token||!item.meta.LoginRequired)&&(!mini||!item.meta.mini)&&item.path!='/login'"
-                    :key="item.path" :index="item.path">
-                    <i :class="item.meta.icon"></i>
-                    <span slot="title">{{item.meta.title}}</span>
-                </el-menu-item>
-            </el-menu>
-        </el-card>
-        <el-card shadow="never" style="margin-top: 20px;">
-            <el-menu>
-                <el-menu-item @click="gotoNews()">
-                    <i class="el-icon-news"></i>
-                    <span slot="title" class="elMenu-title"><a href="https://sina-news.vercel.app/" style="color:#555;">实时新闻</a></span>
-                </el-menu-item>
+            <el-menu :default-active="active" @select="onSelect" v-if="token">
+              <div v-for="item in constantRouterMap" :key="item.path" >
+                  <el-menu-item  v-if="item.meta&&item.meta.type=='user'&&(token||!item.meta.LoginRequired)&&(!mini||!item.meta.mini)&&item.path!='/login'" :index="item.path">
+                      <i :class="item.meta.icon"></i>
+                      <span slot="title">{{item.meta.title}}</span>
+                  </el-menu-item>
+              </div>
+              <el-menu-item @click="gotoNews()">
+                  <i class="el-icon-news"></i>
+                  <span slot="title" class="elMenu-title">实时新闻</span>
+              </el-menu-item>
             </el-menu>
         </el-card>
         <el-card shadow="never" style="margin-top: 20px;text-align: center">
@@ -75,7 +72,7 @@ export default {
       this.$router.push('/login')
     },
     gotoNews () {
-      // window.open('https://sina-news.vercel.app/')
+      window.open('https://sina-news.vercel.app/')
     }
   }
 }
