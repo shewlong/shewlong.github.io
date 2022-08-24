@@ -26,8 +26,9 @@ const token = {
     Authentication({
       commit
     }, accessToken) {
+      commit('SET_TOKEN', accessToken)
+
       UserApi.verifyToken(accessToken).then((response) => {
-        commit('SET_TOKEN', accessToken)
         let result = response.data
         let githubUsername = store.state.configuration.githubUsername
         if (githubUsername == result['login']) {

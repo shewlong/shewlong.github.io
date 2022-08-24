@@ -60,7 +60,7 @@ Vue.prototype.$share = function (message) {
 
 router.beforeEach((to, from, next) => {
   if (!store.state.token.token) {
-    Vue.prototype.$toast('在 github-> settings-> developerSettings-> personalAccessTokens 勾选gist权限,获取Token. 详情参考README.md')
+    // Vue.prototype.$toast('在 github-> settings-> developerSettings-> personalAccessTokens 勾选gist权限,获取Token. 详情参考README.md')
     if (to.path === '/login') {
       next()
     } else {
