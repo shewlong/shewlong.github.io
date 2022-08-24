@@ -1,5 +1,6 @@
 <template>
-  <el-form :model="tableData" :rules="tableData.rules" ref="tableData">
+  <el-button @click="documentTypes()">判断类型</el-button>
+  <!-- <el-form :model="tableData" :rules="tableData.rules" ref="tableData">
     <el-table :data="tableData.data" style="width: 100%">
       <el-table-column prop="date" label="投资管理人" width="180">
       </el-table-column>
@@ -40,10 +41,11 @@
       </el-table-column>
     </el-table>
     <el-button type="primary" @click="save"> 保存</el-button>
-  </el-form>
+  </el-form> -->
 </template>
 
 <script>
+import documentType from "@/utils/util";
 export default {
   data() {
     const valiteName = (rule, value, callback) => {
@@ -101,6 +103,9 @@ export default {
           // 业务逻辑操作代码...
         }
       });
+    },
+    documentTypes() {
+      this.$util.documentType("a.word");
     }
   }
 };

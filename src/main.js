@@ -92,7 +92,7 @@ Vue.prototype.$mobileShare = function (message) {
 }
 
 Vue.prototype.$util = util
-
+console.log(util, 999)
 Vue.config.productionTip = false
 
 new Vue({
