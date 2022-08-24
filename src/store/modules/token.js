@@ -23,10 +23,11 @@ const token = {
   },
 
   actions: {
-    Authentication ({ commit }, accessToken) {
-      commit('SET_TOKEN', accessToken)
-
+    Authentication({
+      commit
+    }, accessToken) {
       UserApi.verifyToken(accessToken).then((response) => {
+        commit('SET_TOKEN', accessToken)
         let result = response.data
         let githubUsername = store.state.configuration.githubUsername
         if (githubUsername == result['login']) {
@@ -51,7 +52,9 @@ const token = {
 
       })
     },
-    Cancellation ({ commit }) {
+    Cancellation({
+      commit
+    }) {
       commit('REMOVE_TOKEN')
       Vue.prototype.$message({
         message: 'Token取消绑定',
